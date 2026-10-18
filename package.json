@@ -1,0 +1,8 @@
+{
+  "name": "ongyeol-clean",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "온결클린 — 가상 청소업체 포트폴리오",
+  "scripts": { "test": "node --test", "start": "node server.mjs" }
+}
