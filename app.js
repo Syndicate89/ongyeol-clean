@@ -89,7 +89,7 @@ document.querySelectorAll('.open-comparison').forEach(button => button.addEventL
   for (const stage of ['before', 'after']) {
     const image = $(`#compare-${stage}`);
     image.src = card.querySelector(`img[data-stage="${stage}"]`).getAttribute('src');
-    image.alt = `${title} ${stage === 'before' ? '청소 전' : '청소 후'} AI 생성 시연 이미지`;
+    image.alt = `${title} ${stage === 'before' ? '청소 전' : '청소 후'}`;
   }
   $('#compare-range').value = '50';
   $('#compare-range').setAttribute('aria-label', `${title} 청소 전후 비교`);
