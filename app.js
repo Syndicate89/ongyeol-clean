@@ -77,6 +77,24 @@ $('#compare-range').addEventListener('input', e => {
   $('#comparison').style.setProperty('--split', `${e.target.value}%`);
   e.target.setAttribute('aria-valuetext', `청소 전 ${e.target.value}%, 청소 후 ${100 - Number(e.target.value)}%`);
 });
+document.querySelectorAll('.open-comparison').forEach(button => button.addEventListener('click', () => {
+  const card = button.closest('.detail-case');
+  const title = card.dataset.title;
+  $('#compare-dialog-title').textContent = `${title} · 전후 비교`;
+  $('#compare-dialog-description').textContent = card.querySelector('.detail-description').textContent;
+  for (const stage of ['before', 'after']) {
+    const image = $(`#compare-${stage}`);
+    image.src = card.querySelector(`.pair-${stage} img`).getAttribute('src');
+    image.alt = `${title} ${stage === 'before' ? '청소 전' : '청소 후'} AI 생성 시연 이미지`;
+  }
+  $('#compare-range').value = '50';
+  $('#compare-range').setAttribute('aria-label', `${title} 청소 전후 비교`);
+  $('#compare-range').setAttribute('aria-valuetext', '청소 전 50%, 청소 후 50%');
+  $('#comparison').style.setProperty('--split', '50%');
+  $('#comparison-dialog').showModal();
+}));
+$('#close-compare').addEventListener('click', () => $('#comparison-dialog').close());
+$('#done-compare').addEventListener('click', () => $('#comparison-dialog').close());
 window.addEventListener('pageshow', update);
 document.addEventListener('visibilitychange', () => { if (!document.hidden) update(); });
 update();
