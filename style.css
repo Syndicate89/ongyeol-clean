@@ -54,3 +54,14 @@ body{line-height:1.8}
 @media(max-width:1000px){.detail-gallery{grid-template-columns:1fr;gap:25px}.pair-photo img{aspect-ratio:1.5}.detail-description{min-height:0}}
 @media(max-width:600px){.detail-case{padding:20px}.detail-case h3{font-size:24px}.detail-case-heading{align-items:flex-start}.detail-category{font-size:14px}.detail-index{font-size:10px}.photo-pair{gap:10px}.pair-photo figcaption{font-size:14px}.pair-photo figcaption span{font-size:10px}.detail-description{font-size:16px}.comparison-dialog{padding:20px}.comparison-dialog h2{font-size:23px}.comparison-dialog .soft-label{font-size:12px}.comparison-dialog>p{font-size:15px}.comparison-dialog .compare-tag{font-size:11px;padding:4px 7px;top:10px}.comparison-dialog .before-tag{left:10px}.comparison-dialog .after-tag{right:10px}.comparison-dialog-footer{flex-direction:column;align-items:stretch}.comparison-dialog-footer p{font-size:14px}.comparison-dialog-footer .button{width:100%;justify-content:center}.gallery-disclaimer{font-size:14px}}
 @media(max-width:480px){.photo-pair{grid-template-columns:1fr;gap:20px}.pair-photo img{aspect-ratio:1.5}.pair-photo figcaption{font-size:16px}.pair-photo figcaption span{font-size:12px}.detail-case-footer{gap:10px}.detail-case-footer>span{font-size:12px}}
+
+/* Each close-up can be compared directly in the gallery. */
+.case-comparison{margin-top:22px;aspect-ratio:1.5}
+.case-comparison .compare-tag{font-size:14px;background:#203e34e8;padding:5px 9px;top:14px}
+.case-comparison .compare-tag>span{font-size:11px;letter-spacing:.08em;margin-left:3px}
+.case-comparison .before-tag{left:14px}
+.case-comparison .after-tag{right:14px}
+.case-comparison .compare-line>span{letter-spacing:0;padding:0;font-size:22px;width:44px;height:44px}
+.case-comparison input{touch-action:pan-y}
+.compare-instruction{font-size:14px;line-height:1.8;margin-block:10px 15px;color:var(--green)}
+@media(max-width:600px){.case-comparison .compare-tag{font-size:14px;padding:4px 8px;top:10px}.case-comparison .before-tag{left:10px}.case-comparison .after-tag{right:10px}.case-comparison .compare-tag>span{display:none}.compare-instruction{font-size:14px}}

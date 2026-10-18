@@ -73,9 +73,13 @@ $('#close-dialog').addEventListener('click', () => $('#consult-dialog').close())
 $('#done-dialog').addEventListener('click', () => $('#consult-dialog').close());
 $('#close-copy').addEventListener('click', () => $('#copy-dialog').close());
 document.querySelectorAll('dialog').forEach(dialog => dialog.addEventListener('click', e => { if (e.target === dialog) { const b = dialog.getBoundingClientRect(); if (e.clientX < b.left || e.clientX > b.right || e.clientY < b.top || e.clientY > b.bottom) dialog.close(); } }));
-$('#compare-range').addEventListener('input', e => {
-  $('#comparison').style.setProperty('--split', `${e.target.value}%`);
-  e.target.setAttribute('aria-valuetext', `청소 전 ${e.target.value}%, 청소 후 ${100 - Number(e.target.value)}%`);
+document.querySelectorAll('.comparison input[type="range"]').forEach(input => {
+  const updateComparison = () => {
+    input.closest('.comparison').style.setProperty('--split', `${input.value}%`);
+    input.setAttribute('aria-valuetext', `청소 전 ${input.value}%, 청소 후 ${100 - Number(input.value)}%`);
+  };
+  input.addEventListener('input', updateComparison);
+  updateComparison();
 });
 document.querySelectorAll('.open-comparison').forEach(button => button.addEventListener('click', () => {
   const card = button.closest('.detail-case');
@@ -84,7 +88,7 @@ document.querySelectorAll('.open-comparison').forEach(button => button.addEventL
   $('#compare-dialog-description').textContent = card.querySelector('.detail-description').textContent;
   for (const stage of ['before', 'after']) {
     const image = $(`#compare-${stage}`);
-    image.src = card.querySelector(`.pair-${stage} img`).getAttribute('src');
+    image.src = card.querySelector(`img[data-stage="${stage}"]`).getAttribute('src');
     image.alt = `${title} ${stage === 'before' ? '청소 전' : '청소 후'} AI 생성 시연 이미지`;
   }
   $('#compare-range').value = '50';
